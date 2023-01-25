@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/BombPlant/Plant.gd" type="Script" id=1]
+[ext_resource path="res://3d Models/bomb_flower.glb" type="PackedScene" id=2]
+[ext_resource path="res://Components/Bomb/Bomb.tscn" type="PackedScene" id=3]
+[ext_resource path="res://3d Models/materials/crop.tres" type="Material" id=4]
+[ext_resource path="res://Sounds/grow sfx.mp3" type="AudioStream" id=5]
+
+[sub_resource type="SphereMesh" id=2]
+radial_segments = 8
+rings = 4
+
+[node name="BombPlant" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.406363, 0 )
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, -0.5, 0 )
+mesh = SubResource( 2 )
+skeleton = NodePath("")
+material/0 = ExtResource( 4 )
+
+[node name="bomb_flower" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )
+
+[node name="AnimationPlayer" parent="bomb_flower" index="1"]
+playback_process_mode = 0
+playback_speed = 0.5
+
+[node name="grow" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+unit_db = 15.0
+autoplay = true
+
+[node name="Bomb" parent="." instance=ExtResource( 3 )]
+
+[editable path="bomb_flower"]
