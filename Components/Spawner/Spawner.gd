@@ -10,9 +10,9 @@ onready var Enemy = load(enemy)
 
 func spawn():
 	var e = Enemy.instance()
+	get_parent().get_parent().add_child(e)
 	e.to_follow = enemy_target
 	e.global_translation = global_translation
-	get_parent().get_parent().add_child(e)
 
 func _ready():
 	$Timer.wait_time = interval_in_sec

@@ -3,6 +3,10 @@ extends RigidBody
 export var ignore:Array
 export var dmg_per_hit = 1
 export var GameOver: PackedScene
+export var max_hp: int = 1500
+
+func _ready():
+	$Life.max_hp = max_hp
 
 func game_over():
 	var GameOverScreen = GameOver.instance()
@@ -10,7 +14,7 @@ func game_over():
 	add_child(GameOverScreen)
 
 func _process(delta):
-	game_over() if $Life/Render/ProgressBar.value <= 0 else null
+	game_over() if $Life.max_hp <= 0 else null
 
 func _integrate_forces(state):
 	for contact in state.get_contact_count():

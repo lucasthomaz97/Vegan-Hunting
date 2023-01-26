@@ -88,4 +88,4 @@ custom_styles/normal = ExtResource( 1 )
 text = "Back to Menu"
 
 [connection signal="pressed" from="Box/Retry" to="." method="_on_Retry_pressed"]
-[connection signal="button_down" from="Box/Menu" to="." method="_on_Menu_button_down"]
+[connection signal="pressed" from="Box/Menu" to="." method="_on_Menu_pressed"]

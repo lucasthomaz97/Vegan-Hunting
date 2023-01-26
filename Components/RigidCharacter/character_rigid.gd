@@ -107,7 +107,7 @@ func jump(state:PhysicsDirectBodyState, buffer: bool) -> bool:
 	return true
 	
 func update_grabbed() -> void: 
-	held_object.transform.basis = $Mesh.transform.basis
+	held_object.transform.basis = $Mesh.transform.basis.orthonormalized()
 	held_object.linear_velocity.y = clamp(held_object.linear_velocity.y,5, 1000) if !on_floor and held_object.global_translation.y <= $holding.global_translation.y else linear_velocity.y
 	
 func grab_action() -> void:

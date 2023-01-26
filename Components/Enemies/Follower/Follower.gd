@@ -18,7 +18,7 @@ func _ready():
 	$Detector.target.append(to_follow)
 
 func _process(delta):
-	hp = $Life/Render/ProgressBar.value
+	hp = $Life.max_hp
 	if hp < 1:
 		$Life.destroyed(self)
 		$CPUParticles.emitting = true

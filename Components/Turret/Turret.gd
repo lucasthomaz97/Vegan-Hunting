@@ -17,7 +17,7 @@ func _ready():
 
 func _process(delta):
 	if $Detector.chased != null and can_shoot:
-		look_at($Detector.chased.global_translation.normalized(), Vector3.UP)
+		look_at($Detector.chased.global_translation, Vector3.UP)
 		$anim.play("shoot")
 
 func _on_AnimationPlayer_animation_finished(anim_name):

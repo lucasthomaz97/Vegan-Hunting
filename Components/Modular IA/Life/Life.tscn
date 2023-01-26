@@ -17,6 +17,7 @@ billboard = 2
 double_sided = false
 texture = SubResource( 4 )
 script = ExtResource( 2 )
+bar = NodePath("Render/ProgressBar")
 
 [node name="Render" type="Viewport" parent="."]
 size = Vector2( 120, 75 )

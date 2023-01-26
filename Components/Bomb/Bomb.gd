@@ -22,10 +22,10 @@ func _ready():
 	
 func explode():
 	var explosion = Explosion.instance()
-	explosion.global_translation = global_translation
 	get_parent().get_parent().add_child(explosion)
+	explosion.global_translation = global_translation
 	$CollisionShape.scale = Vector3.ONE * start_size
-	global_translation.y -= 500000
+	global_translation.y -= 50000
 	$Reset.start()
 	exploded = true
 
@@ -41,8 +41,9 @@ func _integrate_forces(state):
 
 func _on_Reset_timeout():
 	mode = RigidBody.MODE_STATIC
+	exploded = false
 	remove_from_group(holding_group)
 	remove_from_group(planted_group)
+	translation = original_pos
+	rotation_degrees = Vector3.ZERO
 	grow(size)
-	exploded = false
-	global_translation = original_pos

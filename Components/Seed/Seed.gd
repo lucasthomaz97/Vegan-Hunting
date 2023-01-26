@@ -11,8 +11,8 @@ func _process(delta):
 	$Name.text = plant_name + ' Seed'
 	if is_in_group(planted_group) and mode == RigidBody.MODE_STATIC:
 		var pl = Plant.instance()
-		pl.global_translation = global_translation
 		get_parent().add_child(pl)
+		pl.global_translation = global_translation
 		queue_free()
 	elif is_in_group(holding_group):
 		$Tutorial.text = throw_tutorial
